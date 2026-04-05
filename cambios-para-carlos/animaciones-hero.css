@@ -1,0 +1,219 @@
+/* =====================================================
+   ANIMACIONES CINEMATOGRÁFICAS PARA EL HERO
+   Radio Conexión Latina Edmonton
+   
+   INSTRUCCIONES: Copia este código y pégalo ANTES 
+   del cierre </style> en tu index.html
+   ===================================================== */
+
+/* === Contenedor del nuevo logo cinematográfico === */
+.hero-logo-hero {
+  position: relative;
+  width: min(100%, 420px) !important;  /* Más grande para impacto */
+  aspect-ratio: auto !important;
+  border-radius: 24px !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.hero-logo-hero img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 
+    0 0 80px rgba(255, 107, 53, 0.5),
+    0 0 120px rgba(69, 224, 255, 0.3),
+    0 40px 80px rgba(0, 0, 0, 0.5);
+  animation: heroImageReveal 1.2s cubic-bezier(.2,.75,.2,1) both,
+             heroImageFloat 6s ease-in-out infinite 1.2s,
+             heroImageGlow 4s ease-in-out infinite 1.2s;
+}
+
+@keyframes heroImageReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(40px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroImageFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes heroImageGlow {
+  0%, 100% {
+    box-shadow: 
+      0 0 80px rgba(255, 107, 53, 0.5),
+      0 0 120px rgba(69, 224, 255, 0.3),
+      0 40px 80px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow: 
+      0 0 100px rgba(255, 107, 53, 0.7),
+      0 0 150px rgba(69, 224, 255, 0.5),
+      0 40px 80px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* === Partículas de estrellas viajando === */
+.hero-logo-stage::after {
+  content: "";
+  position: absolute;
+  inset: -100px;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, #fff, transparent),
+    radial-gradient(2px 2px at 40% 70%, #ffd44d, transparent),
+    radial-gradient(1.5px 1.5px at 50% 50%, #45e0ff, transparent),
+    radial-gradient(2px 2px at 60% 20%, #ff6b4d, transparent),
+    radial-gradient(1.5px 1.5px at 70% 60%, #ff4d8d, transparent),
+    radial-gradient(2px 2px at 80% 40%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 30% 80%, #45e0ff, transparent),
+    radial-gradient(2px 2px at 10% 50%, #ffd44d, transparent),
+    radial-gradient(1.5px 1.5px at 90% 70%, #ff4d8d, transparent),
+    radial-gradient(2px 2px at 15% 15%, #fff, transparent),
+    radial-gradient(2px 2px at 85% 85%, #45e0ff, transparent),
+    radial-gradient(1.5px 1.5px at 45% 35%, #ffd44d, transparent);
+  background-size: 200% 200%;
+  animation: starFieldTravel 20s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.9;
+  border-radius: 50%;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+
+@keyframes starFieldTravel {
+  0% { 
+    background-position: 0% 0%;
+    transform: scale(1) rotate(0deg);
+  }
+  50% { 
+    background-position: 100% 100%;
+    transform: scale(1.1) rotate(180deg);
+  }
+  100% { 
+    background-position: 0% 0%;
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+/* === Ondas de radio pulsantes adicionales === */
+.hero-logo-stage .radio-wave-extra {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  border: 2px solid rgba(255, 107, 53, 0.4);
+  border-radius: 50%;
+  animation: radioPulseExtra 3s ease-out infinite;
+  pointer-events: none;
+}
+
+.hero-logo-stage .radio-wave-extra:nth-child(2) {
+  animation-delay: 1s;
+  border-color: rgba(69, 224, 255, 0.3);
+}
+
+.hero-logo-stage .radio-wave-extra:nth-child(3) {
+  animation-delay: 2s;
+  border-color: rgba(255, 212, 77, 0.3);
+}
+
+@keyframes radioPulseExtra {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* === Notas musicales flotantes === */
+.hero-logo-stage .floating-note {
+  position: absolute;
+  font-size: 24px;
+  opacity: 0;
+  animation: floatNote 8s ease-in-out infinite;
+  pointer-events: none;
+  text-shadow: 0 0 20px currentColor;
+}
+
+.hero-logo-stage .floating-note:nth-child(1) { left: -30px; top: 20%; animation-delay: 0s; color: #ffd44d; }
+.hero-logo-stage .floating-note:nth-child(2) { right: -30px; top: 40%; animation-delay: 1.5s; color: #45e0ff; }
+.hero-logo-stage .floating-note:nth-child(3) { left: -20px; bottom: 30%; animation-delay: 3s; color: #ff6b4d; }
+.hero-logo-stage .floating-note:nth-child(4) { right: -25px; bottom: 20%; animation-delay: 4.5s; color: #ff4d8d; }
+.hero-logo-stage .floating-note:nth-child(5) { left: 10%; top: -20px; animation-delay: 2s; color: #fff; }
+.hero-logo-stage .floating-note:nth-child(6) { right: 10%; top: -15px; animation-delay: 5s; color: #ffd44d; }
+
+@keyframes floatNote {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(0) rotate(0deg);
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-30px) rotate(15deg);
+  }
+}
+
+/* === Efecto de brillo interior === */
+.hero-logo-hero::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    rgba(255, 107, 53, 0.3),
+    transparent,
+    rgba(69, 224, 255, 0.3),
+    transparent,
+    rgba(255, 212, 77, 0.3),
+    transparent
+  );
+  border-radius: 25px;
+  animation: rotateGlow 8s linear infinite;
+  z-index: -1;
+  filter: blur(15px);
+}
+
+@keyframes rotateGlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* === Ajustes responsivos === */
+@media (max-width: 760px) {
+  .hero-logo-hero {
+    width: min(100%, 300px) !important;
+  }
+  
+  .hero-logo-stage::after {
+    inset: -50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-logo-hero {
+    width: min(100%, 260px) !important;
+  }
+}
